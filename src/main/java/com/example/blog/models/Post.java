@@ -9,20 +9,28 @@ import javax.persistence.Id;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title, anons, full_Text;
-    private int views;
+    private int views=0;
 
+    public Post() {
+    }
 
-    CREATE TABLE TBL_EMPLOYEES (
-            id INT AUTO_INCREMENT  PRIMARY KEY,
-            first_name VARCHAR(250) NOT NULL,
-    last_name VARCHAR(250) NOT NULL,
-    email VARCHAR(250) DEFAULT NULL
-);
+    public Post(String title, String anons, String full_Text) {
+        this.title = title;
+        this.anons = anons;
+        this.full_Text = full_Text;
+    }
 
+    public String getFull_Text() {
+        return full_Text;
+    }
+
+    public void setFull_Text(String full_Text) {
+        this.full_Text = full_Text;
+    }
 
     public Long getId() {
         return id;
@@ -48,13 +56,6 @@ public class Post {
         this.anons = anons;
     }
 
-    public String getFullText() {
-        return fullText;
-    }
-
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
-    }
 
     public int getViews() {
         return views;
